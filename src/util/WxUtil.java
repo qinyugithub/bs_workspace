@@ -57,8 +57,8 @@ public class WxUtil {
 	public static final String POST_MESSAGE="https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=";
 
 	public static String GRANT_TYPE = null;
-	public static String APP_ID = "wx09cbc5db59eae584";
-	public static String APP_SECRET = "783886df1241e6c1079c836af226d378";
+	public static String APP_ID = "******";
+	public static String APP_SECRET = "******";
 	public static String TYPE = null;
 	public static String MY_TOKEN = null;
 	public static String MY_SERVER_URL = null;
