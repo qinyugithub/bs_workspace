@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <script src="../otherui/jquery-1.11.2.min.js" charset="utf-8"></script>
+  
+  <link rel="stylesheet" href="../otherui/layui/css/layui.css"  media="all">
+  <script src="../otherui/layui/layui.js" charset="utf-8"></script>
+  
+  <script src="js/message.js" charset="utf-8"></script>
+</head>
+<body>
+            
+<blockquote class="layui-elem-quote">消息显示</blockquote>
+ 
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+  <legend>面板外的操作示例</legend>
+</fieldset>
+ 
+ <button id="showmessage">弹出对话框</button>
+<div class="site-demo-button">
+  <button class="layui-btn site-demo-layim" data-type="chat">自定义会话</button>
+  <button class="layui-btn site-demo-layim" data-type="message">接受好友的消息</button>
+  <button class="layui-btn site-demo-layim" data-type="messageAudio">接受音频消息</button>
+  <button class="layui-btn site-demo-layim" data-type="messageVideo">接受视频消息</button>
+  <button class="layui-btn site-demo-layim" data-type="messageTemp">接受临时会话消息</button>
+  
+  <br>
+  
+  <button class="layui-btn site-demo-layim" data-type="add">申请好友</button>
+  <button class="layui-btn site-demo-layim" data-type="addqun">申请加群</button>
+  <button class="layui-btn site-demo-layim" data-type="addFriend">同意好友</button>
+  <button class="layui-btn site-demo-layim" data-type="addGroup">增加群组到主面板</button>
+  <button class="layui-btn site-demo-layim" data-type="removeFriend">删除主面板好友</button>
+  <button class="layui-btn site-demo-layim" data-type="removeGroup">删除主面板群组</button>
+  
+  <br>
+  <button class="layui-btn site-demo-layim" data-type="setGray">置灰离线好友</button>
+  <button class="layui-btn site-demo-layim" data-type="unGray">取消好友置灰</button>
+  <a href="http://layim.layui.com/kefu.html" class="layui-btn site-demo-layim" target="_blank">客服模式</a>
+  <button class="layui-btn site-demo-layim" data-type="mobile">移动端版本</button>
+</div>
+
+
+<!-- servlet 测试 -->
+	<br>
+	<!-- <a id="delete" >delete</a> -->
+	<button id="deletebton">button</button>
+	<br>
+	<br>
+	<a href="../update.do">update</a>
+	<br>
+	<br>
+	
+<!-- 打开新页面 -->	
+	<a href="webgis.html">to webgis</a>
+	
+<!-- websocket 测试 -->
+
+
+
+	<div>
+			<input type="button" id="btnConnection" value="连接" />
+			<input type="button" id="btnClose" value="关闭" />
+			<input type="button" id="btnSend" value="发送" />
+		</div>
+		<!-- <script src="js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script> -->
+		<script type="text/javascript">
+			$(function() {
+				var socket;
+				if(typeof(WebSocket) == "undefined") {
+					alert("您的浏览器不支持WebSocket");
+					return;
+				}
+
+				$("#btnConnection").click(function() {
+					//实现化WebSocket对象，指定要连接的服务器地址与端口
+					socket = new WebSocket("wss://www.qinyu.online/wxgongzhonghao/wss/qinyu");
+					//打开事件
+					socket.onopen = function() {
+						alert("Socket 已打开");
+						//socket.send("这是来自客户端的消息" + location.href + new Date());
+					};
+					//获得消息事件
+					socket.onmessage = function(msg) {
+						alert("接收到了消息 "+msg.data);
+					};
+					//关闭事件
+					socket.onclose = function() {
+						alert("Socket已关闭");
+					};
+					//发生了错误事件
+					socket.onerror = function() {
+						alert("发生了错误");
+					}
+				});
+
+				$("#btnSend").click(function() {
+					socket.send("这是来自客户端的消息" + location.href + new Date());
+				});
+
+				$("#btnClose").click(function() {
+					socket.close();
+				});
+			});
+		</script>
+
+
+</body>
+</html>

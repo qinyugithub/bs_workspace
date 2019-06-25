@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.row {
+    height: 658px;
+    width: 98%;
+    margin: 0 auto;
+    border: 3px solid yellow;
+}
+.sjfximg{
+    width:20px;
+    height: 20px;
+    float: right;
+    margin-right: 30px;
+}
+#newmsgicon{
+    color: red;
+    display: none;
+}
+/************************************* 左侧******************/
+#message {
+    height: 100%;
+    border: 0px solid red;
+    overflow: auto;
+}
+/************************************* 中间*******************/
+#center {
+    height: 100%;
+    border: 1px solid blue;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+#map {
+    height: 84%;
+}
+#location {
+    margin-top: 5px;
+    height: 15%;
+    border: 0px solid red;
+}
+/************************************* 右侧********************/
+#detil {
+    padding: 0;
+    border: 0px solid red;
+    height: auto;
+}
+.detiltitle{
+    margin-bottom: 0;
+}
+#contbox{
+    overflow: auto;
+    height: 598px;
+    border: 0px solid black;
+}
+
+.content{
+    border: 1px solid rgba(159, 159, 159, 0.35);
+    margin: 5px;
+    border-radius:5px
+}
+
+#headimage{
+    width: 40px;
+    height: 40px;
+    border: 2px solid skyblue;
+    display: block;
+    margin: 5px auto;
+}
+.message{
+    margin:10px;
+}
+
+#picture{
+    text-align:center;
+}
+.mintitle{
+    float: left;
+    margin: 10px;
+}
+.clearfix:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.pic{
+    border: 2px solid #93D1FF;
+    width: 46%;
+    height: 100px;
+    margin: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***********************layim样式************************/
+.layim-msgbox {
+    margin: 15px;
+}
+
+.layim-msgbox li {
+    position: relative;
+    margin-bottom: 10px;
+    padding: 0 130px 10px 60px;
+    padding-bottom: 10px;
+    line-height: 22px;
+    border-bottom: 1px dotted #e2e2e2;
+}
+
+.layim-msgbox .layim-msgbox-tips {
+    margin: 0;
+    padding: 10px 0;
+    border: none;
+    text-align: center;
+    color: #999;
+}
+
+.layim-msgbox .layim-msgbox-system {
+    padding: 0 10px 10px 10px;
+}
+
+.layim-msgbox li p span {
+    padding-left: 5px;
+    color: #999;
+}
+
+.layim-msgbox li p em {
+    font-style: normal;
+    color: #FF5722;
+}
+
+.layim-msgbox-avatar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+}
+
+.layim-msgbox-user {
+    padding-top: 5px;
+}
+
+.layim-msgbox-content {
+    margin-top: 3px;
+}
+
+.layim-msgbox .layui-btn-small {
+    padding: 0 15px;
+    margin-left: 5px;
+}
+
+.layim-msgbox-btn {
+    position: absolute;
+    right: 0;
+    top: 12px;
+    color: #999;
+}

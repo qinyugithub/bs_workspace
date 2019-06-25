@@ -1,0 +1,51 @@
+html,body{
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    /*background-color: black;*/
+}
+.albox{
+    border: 0px solid rgba(67, 67, 67, 0.84);
+    height: 90%;
+    padding: 0px;
+}
+/*#head{
+    border: 1px solid red;
+    height: 10%;
+}*/
+#center{
+    padding: 20px;
+}
+#maptitle{
+    text-align:center;
+    font-size:24px;
+}
+/*地图容器*/
+#content{
+    border: 1px solid red;
+    height: 90%;
+}
+#radius{
+    margin: 5px;
+}
+/*右上方盒子*/
+#rt{
+    border: 1px solid red;
+    height: 50%;
+    margin: 10px;
+    padding: 20px;
+}
+/*右下方盒子*/
+#rb{
+    border: 0px solid red;
+    height: 45%;
+    margin: 10px;
+}
+/*最下面两个小盒子*/
+.btbox{
+    border: 1px solid red;
+    float: left;
+    width: 50%;
+    height: 100%;
+    padding: 10px;
+}

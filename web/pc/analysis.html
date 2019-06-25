@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据分析</title>
+    <style>
+        .rightli{
+            float: right;
+        }
+    </style>
+    <link rel="stylesheet" href="../otherui/layui-v2.4.5/layui/css/layui.css"  media="all">
+    <script src="../otherui/jquery-1.11.2.min.js" charset="utf-8"></script>
+    <!-- 引入bootstap -->
+    <link rel="stylesheet"
+          href="../otherui/bootstrap-3.3.7-dist/css/bootstrap.css" media="all">
+    <link rel="stylesheet" href="css/analysis.css" >
+    <link rel="stylesheet" href="../otherui/layui-v2.4.5/layui/css/layui.css"  media="all">
+
+</head>
+<body id="analysisbody" style="display: none">
+<!--<div id="head"></div>-->
+<!--<ul class="layui-nav">
+    <li class="layui-nav-item">
+        <a href="">消息中心<span class="layui-badge">9</span></a>
+    </li>
+    <li class="layui-nav-item layui-this">
+        <a href="">警况分析</span></a>
+    </li>
+    <li class="layui-nav-item rightli" lay-unselect="">
+        <a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img">我</a>
+        <dl class="layui-nav-child">
+            <dd><a href="javascript:;">修改信息</a></dd>
+            <dd><a href="javascript:;">安全管理</a></dd>
+            <dd><a href="javascript:;">退了</a></dd>
+        </dl>
+    </li>
+</ul>-->
+<blockquote class="layui-elem-quote">数据分析</blockquote>
+<div class="col-md-6 albox" id="center">
+    <div id="maptitle"><strong>区域报警点热力统计图</strong></div>
+    <div id="content"></div>
+    <div id="setOptions">
+        <!--<button id="show">显示/隐藏</button>
+        <button id="data">更新数据</button>-->
+        <button class="layui-btn layui-btn-danger layui-btn-xs" id="radius">警况预测</button>
+        <!--<button id="gradient">改变颜色</button>
+        <button id="opacity">改变透明度</button>
+        <button id="destroy">销毁对象</button>-->
+    </div>
+</div>
+
+<div class="col-md-6 albox" id="right">
+    <div id="rt"></div>
+    <div id="rb">
+        <div class="btbox" id="rbl"></div>
+        <div class="btbox" id="rbr"></div>
+    </div>
+</div>
+
+
+<script src="../otherui/jquery-1.11.2.min.js" charset="utf-8"></script>
+<script src="../otherui/layui-v2.4.5/layui/layui.js" charset="utf-8"></script>
+<script src="js/analysis.js" charset="utf-8"></script>
+<!-- 腾讯地图API -->
+<script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&libraries=visualization&key=FMIBZ-R3LW6-ITPS7-EXR62-WHVWV-5ABGN"></script>
+<!-- echarts相关-->
+<!--<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+&lt;!&ndash;<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>&ndash;&gt;
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>-->
+<script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+</body>
+</html>

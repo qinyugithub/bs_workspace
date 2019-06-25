@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UserMapper">
+    <!-- 插入报警数据 -->
+    <insert id="insertUrgentMessage">
+        insert into urgentMsg(
+        openid,
+        headimgurl,
+        nickname,
+        city,
+        sex,
+        clongitude,
+        clatitude,
+        detil,
+        addresstype,
+        placeaddress,
+        picurl,
+        placelongitude,
+        placelatitude,
+        creattime,
+        flag
+        ) values (
+        #{personinformation.openid},
+        #{personinformation.headimgurl},
+        #{personinformation.nickname},
+        #{personinformation.country}+#{personinformation.province}+#{personinformation.city},
+        #{personinformation.sex},
+        #{longitude,jdbcType=FLOAT},
+        #{latitude,jdbcType=FLOAT},
+        #{message},
+        #{addresstype},
+        #{placeaddress},
+        #{picurl},
+        #{placelongitude,jdbcType=FLOAT},
+        #{placelatitude,jdbcType=FLOAT},
+        GETDATE(),
+        1
+        );
+    </insert>
+
+    <!--根据警务状态获取警务消息-->
+    <select id="searchUrgentMessage" resultType="map">
+        select
+         id,
+         openid,
+         headimgurl,
+         nickname,
+         (CASE  WHEN addresstype=1 THEN '实时追踪' ELSE '固定位置' END) as remark,
+         detil as content,
+         CONVERT(varchar(100), creattime, 120) as time
+         from urgentMsg where flag=1 order by creattime desc
+    </select>
+
+    <!--根据id获取详细数据-->
+    <select id="getUrgentMsgById" resultType="map">
+     select
+         openid,
+         headimgurl,
+         nickname,
+         isnull(clatitude,'') as clatitude,
+         isnull(clongitude,'') as clongitude,
+         detil,
+         (CASE  WHEN addresstype=1 THEN '实时追踪' ELSE '固定位置' END) as addresstype,
+         isnull(placelongitude,'') as placelongitude,
+         isnull(placelatitude,'') as placelatitude,
+         isnull(placeaddress,'') as placeaddress,
+         picurl
+         from urgentMsg where id=#{id}
+    </select>
+
+    <!--获取热力图数据-->
+    <select id="searchHotData" resultType="map">
+        select
+         clongitude+0.00558 lng,
+         clatitude-0.002196 lat,
+         50 as <![CDATA[value]]>
+         from urgentMsg
+    </select>
+</mapper>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>警况监测</title>
+    <script src="../otherui/jquery-1.11.2.min.js" charset="utf-8"></script>
+    <!-- 引入ol -->
+   <!-- <link href="../otherui/ol/ol.css" rel="stylesheet" type="text/css"/>
+    <script src="../otherui/ol/ol.js" type="text/javascript"></script>-->
+
+    <!-- 引入layui -->
+    <link rel="stylesheet" href="../otherui/layui/css/layui.css"  media="all">
+    <script src="../otherui/layui/layui.js" charset="utf-8"></script>
+
+    <!-- 引入bootstap -->
+    <link rel="stylesheet"
+          href="../otherui/bootstrap-3.3.7-dist/css/bootstrap.css" media="all">
+
+    <script src="js/webgis.js" charset="utf-8"></script>
+
+    <!-- 腾讯地图API -->
+    <script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=FMIBZ-R3LW6-ITPS7-EXR62-WHVWV-5ABGN"></script>
+    <link rel="stylesheet" href="css/webgis.css" >
+
+</head>
+<body id="webgisbody" class="contariner" style="display: none">
+<blockquote class="layui-elem-quote">消息显示<span id="newmsgicon">[有新消息]</span> <a class="sjfxa" target="_blank" href="analysis.html"><img title="数据分析" class="sjfximg" src="images/sjfx.png"></a></blockquote>
+<div class="row">
+    <!--盒子一-->
+    <div id="message" class="col-md-4">
+    <ul class="layim-msgbox" id="LAY_view"></ul>
+    <textarea title="消息模版" id="LAY_tpl" style="display:none;">
+        {{# layui.each(d.data, function(index, item){
+        if(item.from){ }}
+    <li data-uid="{{ item.from }}" data-fromGroup="{{ item.from_group }}">
+      <a href="/u/{{ item.from }}/" target="_blank">
+        <img src="{{ item.user.avatar }}" class="layui-circle layim-msgbox-avatar">
+      </a>
+      <p class="layim-msgbox-user">
+        <a href="/u/{{ item.from }}/" target="_blank">{{ item.user.username||'' }}</a>
+        <span>{{ item.time }}</span>
+      </p>
+      <p class="layim-msgbox-content">
+        {{ item.content }}
+        <span>{{ item.remark ? item.remark : '' }}</span>
+      </p>
+      <p class="layim-msgbox-btn">
+        <button class="layui-btn layui-btn-small detilbutton" id={{ item.id }}>详情</button>
+        <button class="layui-btn layui-btn-small layui-btn-primary callbutton" id={{ item.user.id}}>完成</button>
+      </p>
+     </li>
+         {{# } else { }}
+      <li class="layim-msgbox-system">
+      <p><em>系统：</em>{{ item.content }}<span>{{ item.time }}</span></p>
+    </li>
+          {{# }
+          }); }}
+    </textarea>
+    </div>
+    <!--盒子二-->
+    <div id="center" class="col-md-5">
+        <div id="map"></div>
+        <div id="location">
+            <div class="layui-form-item" style="margin-bottom: 0px; margin-top: 5px;">
+                <div class="layui-inline">
+                    <label style="width: 90px;" class="layui-form-label">实时经度</label>
+                    <div style="width: 150px;" class="layui-input-inline">
+                        <input type="text" id="longtitude" name="dqjd" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label style="width: 90px;" class="layui-form-label">实时纬度</label>
+                    <div style="width: 150px;" class="layui-input-inline">
+                        <input type="text" id="latitude" name="dqwd" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label style="width: 90px;" class="layui-form-label">位置描述</label>
+                <div style="width: 80%;" class="layui-input-inline">
+                    <input type="text" name="wzms" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--盒子三-->
+    <div id="detil" class="col-md-3">
+        <blockquote class="layui-elem-quote detiltitle">警务详情</blockquote>
+        <div id="contbox">
+            <div class="content" id="information">
+              <img id="headimage" src="images/username.png" class="layui-circle">
+              <p class="message"><strong>用户昵称：</strong><span id="nickname"></span></p>
+                <p class="message"><strong>报警位置：</strong><span id="currentloaction"></span></p>
+              <p class="message"><strong>警务详情：</strong><span id="xq"></span></p>
+
+              <p class="message"><strong>位置类型：</strong><span id="addresstype"></span></p>
+              <p class="message"><strong>固定位置坐标：</strong><span id="placelocation"></span></p>
+              <p class="message"><strong>固定位置描述：</strong><span id="placeaddress"></span></p>
+            </div>
+        <div class="content" id="picture">
+            <div class="clearfix"><strong class="mintitle">图片附件</strong></div>
+            <div id="pictureitem"></div>
+            <!--<a class="pica" href="javascript:;"><img class="pic" src="images/yichang.JPG"></a>-->
+        </div>
+        <div class="divtitle content" id="locatioinmessage">
+            <strong class="mintitle">坐标记录</strong>
+            <table class="layui-table" lay-size="sm">
+                <thead>
+                 <tr>
+                    <th>时间</th>
+                    <th>经度</th>
+                    <th>纬度</th>
+                 </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>16:24:29</td>
+                    <td>144.365258</td>
+                    <td>39.251458</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+
+
+        <!--<div class="site-demo-button">
+            <button class="layui-btn site-demo-layim" data-type="chat">自定义会话</button>
+            <button class="layui-btn site-demo-layim" data-type="message">接受好友的消息</button>
+            <button class="layui-btn site-demo-layim" data-type="messageAudio">接受音频消息</button>
+            <button class="layui-btn site-demo-layim" data-type="messageVideo">接受视频消息</button>
+            <button class="layui-btn site-demo-layim" data-type="messageTemp">接受临时会话消息</button>
+
+            <br>
+
+            <button class="layui-btn site-demo-layim" data-type="add">申请好友</button>
+            <button class="layui-btn site-demo-layim" data-type="addqun">申请加群</button>
+            <button class="layui-btn site-demo-layim" data-type="addFriend">同意好友</button>
+            <button class="layui-btn site-demo-layim" data-type="addGroup">增加群组到主面板</button>
+            <button class="layui-btn site-demo-layim" data-type="removeFriend">删除主面板好友</button>
+            <button class="layui-btn site-demo-layim" data-type="removeGroup">删除主面板群组</button>
+
+            <br>
+            <button class="layui-btn site-demo-layim" data-type="setGray">置灰离线好友</button>
+            <button class="layui-btn site-demo-layim" data-type="unGray">取消好友置灰</button>
+            <a href="http://layim.layui.com/kefu.html" class="layui-btn site-demo-layim" target="_blank">客服模式</a>
+            <button class="layui-btn site-demo-layim" data-type="mobile">移动端版本</button>
+        </div>-->
+
+
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户登录</title>
+<script src="../otherui/jquery-1.11.2.min.js" charset="utf-8"></script>
+
+<!-- 引入layui -->
+<link rel="stylesheet" href="../otherui/layui/css/layui.css" media="all">
+<script src="../otherui/layui/layui.js" charset="utf-8"></script>
+
+<script src="js/login.js" charset="utf-8"></script>
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.head {
+	height: 60px;
+	width: 90%;
+	margin: 0px auto;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.head_title {
+	width: 500px;
+	height: 100%;
+	background: url(images/title.png) no-repeat;
+	background-size: contain;
+}
+
+.content {
+	height: 600px;
+	width: 100%;
+	border: 1px solid red;
+	background: url(images/content.png) no-repeat;
+	background-size: contain;
+	position: relative;
+}
+
+.login {
+	width: 350px;
+	height: 280px;
+	background: #fff;
+	position: absolute;
+	top: 150px;
+	right: 200px;
+	border-radius: 5px;
+}
+
+.login_button {
+	height: 100px;
+	width: 80%;
+	margin: 0px auto;
+}
+.login_title_div{
+width: 80%;
+height:60px;
+border:1px solid white;
+margin:0px auto;
+}
+.login_title{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #084B95;
+    margin-top:15px;
+}
+.layui-form-label{
+width: 50px;
+}
+input{width: 100%;}
+</style>
+</head>
+<body>
+	<div class="head">
+		<div class="head_title"></div>
+	</div>
+	<div class="content">
+		<div class="login">
+		<div class="login_title_div"><div class="login_title">账户登录</div></div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+				<label class="layui-form-label"><img src="images/username.png" width="30" height="30"></label>
+					<div class="layui-input-inline">
+						<input type="text" name="usernmae" lay-verify="title" placeholder="请输入用户名"
+							autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"><img src="images/password.png" width="30" height="30"></label>
+					<div class="layui-input-inline">
+						<input type="password" name="password" lay-verify="title" placeholder="请输入密码"
+							autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="login_button">
+					<button style="width: 100%;" class="layui-btn layui-btn-fluid">登
+						录</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
